@@ -1,38 +1,38 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-buttons slot="start" defaultHref="/tabs/films">
+    <ion-buttons slot="start" defaultHref="/tabs/people">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>{{ film?.title }}</ion-title>
+    <ion-title>{{ planet?.name }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content *ngIf="film">
+<ion-content *ngIf="planet">
   <ion-card>
     <ion-card-content>
-      <h3><strong>Synopsis</strong></h3>
-      {{ film.opening_crawl }}
+      <h3><strong>Population</strong></h3>
+      {{ planet.population }}
     </ion-card-content>
   </ion-card>
 
     <ion-card>
       <ion-card-content>
-        <h3><strong>Director</strong></h3>
-        {{ film.director }}
+        <h3><strong>Climate</strong></h3>
+        {{ planet.climate }}
       </ion-card-content>
     </ion-card>
 
     <ion-card>
       <ion-card-content>
-        <h3><strong>Producer</strong></h3>
-        {{ film.producer }}
+        <h3><strong>Rotation period</strong></h3>
+        {{ planet.rotation_period }}
       </ion-card-content>
     </ion-card>
     
     <ion-card>
       <ion-card-content>
-        <h3><strong>Release date</strong></h3>
-        {{ film.release_date }}
+        <h3><strong>Orbital period</strong></h3>
+        {{ planet.orbital_period }}
       </ion-card-content>
     </ion-card>
 

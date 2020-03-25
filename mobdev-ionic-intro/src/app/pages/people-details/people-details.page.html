@@ -1,38 +1,38 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-buttons slot="start" defaultHref="/tabs/films">
+    <ion-buttons slot="start" defaultHref="/tabs/people">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>{{ film?.title }}</ion-title>
+    <ion-title>{{ person?.name }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content *ngIf="film">
+<ion-content *ngIf="person">
   <ion-card>
     <ion-card-content>
-      <h3><strong>Synopsis</strong></h3>
-      {{ film.opening_crawl }}
+      <h3><strong>Height</strong></h3>
+      {{ person.height }}
     </ion-card-content>
   </ion-card>
 
     <ion-card>
       <ion-card-content>
-        <h3><strong>Director</strong></h3>
-        {{ film.director }}
+        <h3><strong>Mass</strong></h3>
+        {{ person.mass }}
       </ion-card-content>
     </ion-card>
 
     <ion-card>
       <ion-card-content>
-        <h3><strong>Producer</strong></h3>
-        {{ film.producer }}
+        <h3><strong>Gender</strong></h3>
+        {{ person.gender }}
       </ion-card-content>
     </ion-card>
     
     <ion-card>
       <ion-card-content>
-        <h3><strong>Release date</strong></h3>
-        {{ film.release_date }}
+        <h3><strong>Birth year</strong></h3>
+        {{ person.birth_year }}
       </ion-card-content>
     </ion-card>
 
