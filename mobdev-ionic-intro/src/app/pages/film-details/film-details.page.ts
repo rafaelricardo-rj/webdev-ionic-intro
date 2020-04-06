@@ -1,23 +1,69 @@
+	
+import { FavouriteService } from './../../services/favourite.service';
+	
 import { ApiService } from './../../services/api.service';
+	
 import { Component, OnInit } from '@angular/core';
+	
 import { ActivatedRoute } from '@angular/router';
-
+	
+ 
 @Component({
+	
   selector: 'app-film-details',
+	
   templateUrl: './film-details.page.html',
+	
   styleUrls: ['./film-details.page.scss'],
+	
 })
+	
 export class FilmDetailsPage implements OnInit {
-
+	
   film: any;
-
-  constructor(private activatedRoute: ActivatedRoute, private api: ApiService) { }
-
+	
+  isFavourite = false;
+	
+  filmId = null;
+	
+  constructor(private activatedRoute: ActivatedRoute, private api: ApiService, private favouriteService: FavouriteService) { }
+	
   ngOnInit() {
-    let id = this.activatedRoute.snapshot.paramMap.get('id');
-    this.api.getFilm(id).subscribe(res => {
+	
+    this.filmId = this.activatedRoute.snapshot.paramMap.get('id');
+	
+    this.api.getFilm(this.filmId).subscribe(res => {
+	
       this.film = res;
+	
     });
-  }
 
+    this.favouriteService.isFavourite(this.filmId).then(isFav => {
+	
+      this.isFavourite = isFav;
+	
+    });
+	
+  }
+	
+  favouriteFilm() {
+	
+    this.favouriteService.favouriteFilm(this.filmId).then(() => {
+	
+      this.isFavourite = true;
+	
+    });
+	
+  }
+	
+  unfavouriteFilm() {
+	
+    this.favouriteService.unfavouriteFilm(this.filmId).then(() => {
+	
+      this.isFavourite = false;
+	
+    });
+	
+  }
+	
 }

@@ -1,39 +1,63 @@
 <ion-header>
+	
   <ion-toolbar color="primary">
-    <ion-buttons slot="start" defaultHref="/tabs/films">
+	
+    <ion-buttons slot="start" defaulthref="/tabs/(films:films)">
+	
       <ion-back-button></ion-back-button>
+	
     </ion-buttons>
+	
     <ion-title>{{ film?.title }}</ion-title>
+	
+    <ion-buttons slot="end">
+	
+      <ion-button (click)="unfavoriteFilm()" *ngif="isFavorite">
+	
+        <ion-icon name="star" slot="icon-only" color="secondary"></ion-icon>
+	
+      </ion-button>
+	
+      <ion-button (click)="favoriteFilm()" *ngif="!isFavorite">
+	
+        <ion-icon name="star-outline" slot="icon-only" color="secondary"></ion-icon>
+	
+      </ion-button>
+	
+    </ion-buttons>
+	
   </ion-toolbar>
+	
 </ion-header>
-
-<ion-content *ngIf="film">
-  <ion-card>
+	
+<ion-content padding="">
+	
+  <ion-card *ngif="film" class="movie-card">
+	
+    <ion-card-header>Episode {{ film.episode_id }}: {{ film.title }}</ion-card-header>
+	
     <ion-card-content>
-      <h3><strong>Synopsis</strong></h3>
+	
       {{ film.opening_crawl }}
+	
     </ion-card-content>
+	
+    <ion-item class="movie-info" lines="none">
+	
+      <ion-icon name="film" slot="start"></ion-icon>
+	
+      Director: {{ film.director }}
+	
+    </ion-item>
+	
+    <ion-item class="movie-info" lines="none">
+	
+      <ion-icon name="calendar" slot="start"></ion-icon>
+	
+      Release Date: {{ film.release_date | date }}
+	
+    </ion-item>
+	
   </ion-card>
-
-    <ion-card>
-      <ion-card-content>
-        <h3><strong>Director</strong></h3>
-        {{ film.director }}
-      </ion-card-content>
-    </ion-card>
-
-    <ion-card>
-      <ion-card-content>
-        <h3><strong>Producer</strong></h3>
-        {{ film.producer }}
-      </ion-card-content>
-    </ion-card>
-    
-    <ion-card>
-      <ion-card-content>
-        <h3><strong>Release date</strong></h3>
-        {{ film.release_date }}
-      </ion-card-content>
-    </ion-card>
-
+	
 </ion-content>
